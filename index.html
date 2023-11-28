@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pure CSS Snow Effect Example</title>
     <link rel="stylesheet" href="snow.css" />
+    <script src="index.js"></script>
   </head>
-  <body>
+  <body onload="onLoad()">
    
     <div>
     <div class="snow"></div>
@@ -284,52 +285,4 @@
   </div>
   </body>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLWL5N9CSM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-LLWL5N9CSM');
-  function setInitialDate() {
-            var countDownDate = new Date("Dec 31, 2023 00:00:00").getTime();
-            localStorage.setItem('countDownDate', countDownDate);
-        }
-
-        // Function to get the remaining time from local storage
-        function getRemainingTime() {
-            var storedDate = localStorage.getItem('countDownDate');
-            if (!storedDate) {
-                setInitialDate();
-                storedDate = localStorage.getItem('countDownDate');
-            }
-            return storedDate;
-        }
-
-        // Update the countdown every 1 second
-        var x = setInterval(function() {
-            // Get the stored initial countdown date
-            var countDownDate = getRemainingTime();
-
-            // Get the current date and time
-            var now = new Date().getTime();
-
-            // Calculate the remaining time
-            var distance = countDownDate - now;
-
-            // Calculate days, hours, minutes, and seconds
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Display the countdown in the #countdown element
-            document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-            // If the countdown is over, display a message
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "EXPIRED";
-            }
-        }, 1000);
-</script>
-
 </html>
